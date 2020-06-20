@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.jogamp.opengl.GL2;
+import edu.cg.algebra.Point;
 import edu.cg.models.BoundingSphere;
 import edu.cg.models.IIntersectable;
 import edu.cg.models.IRenderable;
@@ -32,8 +33,8 @@ public class Front implements IRenderable, IIntersectable {
 		gl.glTranslated(Specification.TIRE_RADIUS * 2 + Specification.F_BUMPER_LENGTH / 2.0, 0.0, 0.0);
 		bumper.render(gl);
 		gl.glPopMatrix();
-
-		bumper.render(gl);
+		BoundingSphere sphere = this.getBoundingSpheres().get(0);
+		sphere.render(gl);
 	}
 
 	@Override
@@ -42,13 +43,17 @@ public class Front implements IRenderable, IIntersectable {
 
 	@Override
 	public List<BoundingSphere> getBoundingSpheres() {
-		// TODO: Return a list of bounding spheres the list structure is as follow:
 		// s1
 		// where:
 		// s1 - sphere bounding the car front
 		LinkedList<BoundingSphere> res = new LinkedList<BoundingSphere>();
-
-
+		double x = Specification.F_LENGTH;
+		double y = Specification.F_HEIGHT;
+		double z = Specification.F_DEPTH;
+		Point p = new Point(0,y/2,0);
+		double radius = Math.sqrt(Math.pow((x/2), 2) + Math.pow((y/2), 2) + Math.pow((z/2), 2));
+		BoundingSphere sphere = new BoundingSphere(radius, p);
+		res.add(sphere);
 		return res;
 	}
 

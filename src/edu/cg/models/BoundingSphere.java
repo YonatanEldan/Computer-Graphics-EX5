@@ -37,6 +37,7 @@ public class BoundingSphere implements IRenderable {
 		this.center.add(p);
 	}
 
+
 	@Override
 	public void render(GL2 gl) {
 		gl.glColor3d(this.color[0], this.color[1], this.color[2]);
@@ -45,7 +46,7 @@ public class BoundingSphere implements IRenderable {
 
 		GLU glu = new GLU();
 		GLUquadric sphere = glu.gluNewQuadric();
-		glu.gluSphere(sphere, this.radius, 10, 10);
+		glu.gluSphere(sphere, this.radius, 50, 50);
 
 		gl.glPopMatrix();
 		glu.gluDeleteQuadric(sphere);

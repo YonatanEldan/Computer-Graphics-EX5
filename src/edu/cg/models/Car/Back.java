@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.jogamp.opengl.GL2;
+import edu.cg.algebra.Point;
 import edu.cg.models.BoundingSphere;
 import edu.cg.models.IIntersectable;
 import edu.cg.models.IRenderable;
@@ -38,6 +39,8 @@ public class Back implements IRenderable, IIntersectable {
 				0.5 * (Specification.B_HEIGHT_1 + Specification.B_HEIGHT_2), 0.0);
 		spoiler.render(gl);
 		gl.glPopMatrix();
+		BoundingSphere sphere = this.getBoundingSpheres().get(0);
+		sphere.render(gl);
 	}
 
 	@Override
@@ -52,7 +55,13 @@ public class Back implements IRenderable, IIntersectable {
 		// where:
 		// s1 - sphere bounding the car front
 		LinkedList<BoundingSphere> res = new LinkedList<BoundingSphere>();
-
+		double x = Specification.B_LENGTH;
+		double y = Specification.B_HEIGHT;
+		double z = Specification.B_DEPTH;
+		Point p = new Point(0,y/2.0,0);
+		double radius = Math.sqrt(Math.pow((x/2), 2) + Math.pow((y/2.0), 2) + Math.pow((z/2), 2));
+		BoundingSphere sphere = new BoundingSphere(radius, p);
+		res.add(sphere);
 		return res;
 	}
 
