@@ -12,7 +12,7 @@ public class Front implements IRenderable, IIntersectable {
 	// TODO: Add necessary fields (e.g. the bumper).
 	private FrontHood hood = new FrontHood();
 	private PairOfWheels wheels = new PairOfWheels();
-	private FrontBumber bumber = new FrontBumber();
+	private FrontBumber bumper = new FrontBumber();
 
 	@Override
 	public void render(GL2 gl) {
@@ -26,6 +26,11 @@ public class Front implements IRenderable, IIntersectable {
 		gl.glTranslated(Specification.F_HOOD_LENGTH / 2.0 - 1.25 * Specification.TIRE_RADIUS,
 				0.5 * Specification.TIRE_RADIUS, 0.0);
 		wheels.render(gl);
+		gl.glPopMatrix();
+
+		gl.glPushMatrix();
+		gl.glTranslated(Specification.F_BUMPER_LENGTH / 2.0 + 2 * Specification.TIRE_RADIUS, 0.0, 0.0);
+		bumper.render(gl);
 		gl.glPopMatrix();
 	}
 
