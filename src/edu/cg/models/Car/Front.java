@@ -12,6 +12,7 @@ public class Front implements IRenderable, IIntersectable {
 	// TODO: Add necessary fields (e.g. the bumper).
 	private FrontHood hood = new FrontHood();
 	private PairOfWheels wheels = new PairOfWheels();
+	private FrontBumber bumber = new FrontBumber();
 
 	@Override
 	public void render(GL2 gl) {
