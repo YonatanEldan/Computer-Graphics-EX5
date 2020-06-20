@@ -2,6 +2,8 @@ package edu.cg.models;
 
 import com.jogamp.opengl.GL2;
 
+import com.jogamp.opengl.glu.GLU;
+import com.jogamp.opengl.glu.GLUquadric;
 import edu.cg.algebra.Point;
 
 public class BoundingSphere implements IRenderable {
@@ -27,18 +29,26 @@ public class BoundingSphere implements IRenderable {
 	 * @return true if the spheres intersects, and false otherwise
 	 */
 	public boolean checkIntersection(BoundingSphere s) {
-		// TODO: Check if two spheres intersect.
-		return false;
+		return this.center.dist(s.center) <= this.radius + s.radius;
 	}
 
 	public void translateCenter(double dx, double dy, double dz) {
-		// TODO: Translate the sphere center by (dx,dy,dz).
+		Point p = new Point(dx,dy,dz);
+		this.center.add(p);
 	}
 
 	@Override
 	public void render(GL2 gl) {
-		// TODO: Render a sphere with the given radius and center.
-		// NOTE : Use the specified color when rendering.
+		gl.glColor3d(this.color[0], this.color[1], this.color[2]);
+		gl.glPushMatrix();
+		gl.glTranslated(this.center.x,this.center.y,this.center.z);
+
+		GLU glu = new GLU();
+		GLUquadric sphere = glu.gluNewQuadric();
+		glu.gluSphere(sphere, this.radius, 10, 10);
+
+		gl.glPopMatrix();
+		glu.gluDeleteQuadric(sphere);
 	}
 
 	@Override
