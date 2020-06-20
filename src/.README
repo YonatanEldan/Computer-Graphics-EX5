@@ -1,0 +1,7 @@
+Yonatan Eldan-311238448
+Nadav Dor - 204509087
+
+We have chose to implement as a new design couple of exhausts in a grey color.
+Important implementation notes and why we have choosed to work that way.
+-GetBoundingSpheres - implemented regardless of the length of th list, even though we only have one Sphere per
+car part, we believe it will be relevant in next HW.
