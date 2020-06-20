@@ -28,8 +28,9 @@ public class Front implements IRenderable, IIntersectable {
 		wheels.render(gl);
 		gl.glPopMatrix();
 
+		// Render the bumper
 		gl.glPushMatrix();
-		gl.glTranslated(Specification.F_BUMPER_LENGTH / 2.0 + 2 * Specification.TIRE_RADIUS, 0.0, 0.0);
+		gl.glTranslated(Specification.TIRE_RADIUS * 2 + Specification.F_BUMPER_LENGTH / 2.0, 0.0, 0.0);
 		bumper.render(gl);
 		gl.glPopMatrix();
 	}

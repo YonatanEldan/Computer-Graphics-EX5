@@ -8,18 +8,13 @@ import edu.cg.models.IRenderable;
 import edu.cg.models.SkewedBox;
 
 public class FrontBumber implements IRenderable {
-	// TODO: Add fields as you like (and methods if you think they are necessary).
 	private static final SkewedBox bumperBase = new SkewedBox(Specification.F_BUMPER_LENGTH, Specification.F_BUMPER_HEIGHT_1, Specification.F_BUMPER_HEIGHT_2, Specification.F_BUMPER_DEPTH, Specification.F_BUMPER_DEPTH);
 	private static final SkewedBox bumperWing = new SkewedBox(Specification.F_BUMPER_LENGTH, Specification.F_BUMPER_WINGS_HEIGHT_1, Specification.F_BUMPER_HEIGHT_2, Specification.F_BUMPER_WINGS_DEPTH, Specification.F_BUMPER_WINGS_DEPTH);
 
 
 	@Override
 	public void render(GL2 gl) {
-		// TODO: Render the front bumper relative to it's local coordinate system.
-		// Remember the dimensions of the bumper, this is important when you
-		// combine the bumper with the hood.
 		GLU glu = new GLU();
-		final GLUquadric quad = glu.gluNewQuadric();
 
 		Materials.SetBlackMetalMaterial(gl);
 		bumperBase.render(gl);
@@ -28,26 +23,27 @@ public class FrontBumber implements IRenderable {
 		gl.glPushMatrix();
 		Materials.SetBlackMetalMaterial(gl);
 		gl.glTranslated(0, 0, Specification.F_BUMPER_DEPTH / 2 + Specification.F_BUMPER_WINGS_DEPTH / 2);
-		renderBumperWing(gl, glu, quad);
+		renderBumperWing(gl, glu);
 		gl.glPopMatrix();
-
 
 		// translate for right wing
 		gl.glPushMatrix();
 		Materials.SetBlackMetalMaterial(gl);
 		gl.glTranslated(0, 0, - Specification.F_BUMPER_DEPTH / 2 - Specification.F_BUMPER_WINGS_DEPTH / 2);
-		renderBumperWing(gl, glu, quad);
+		renderBumperWing(gl, glu);
 		gl.glPopMatrix();
 	}
 
-	private void renderBumperWing(GL2 gl, GLU glu, GLUquadric quad) {
+	private void renderBumperWing(GL2 gl, GLU glu) {
 		Materials.SetBlackMetalMaterial(gl);
-		this.bumperWing.render(gl);
+		bumperWing.render(gl);
 
+		gl.glPushMatrix();
 		Materials.SetRedMetalMaterial(gl);
-		gl.glTranslated(0, Specification.F_BUMPER_LENGTH / 3, 0);
+		gl.glTranslated(0, Specification.F_BUMPER_LENGTH / 3.5, 0);
 		GLUquadric sphere = glu.gluNewQuadric();
-		glu.gluSphere(sphere, 0.05, 18, 18);
+		glu.gluSphere(sphere, 0.02, 18, 18);
+		gl.glPopMatrix();
 	}
 
 	@Override
