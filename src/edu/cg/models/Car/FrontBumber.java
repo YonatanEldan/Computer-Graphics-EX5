@@ -35,6 +35,7 @@ public class FrontBumber implements IRenderable {
 	}
 
 	private void renderBumperWing(GL2 gl, GLU glu) {
+
 		Materials.SetBlackMetalMaterial(gl);
 		bumperWing.render(gl);
 

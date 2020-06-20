@@ -16,7 +16,6 @@ public class Front implements IRenderable, IIntersectable {
 
 	@Override
 	public void render(GL2 gl) {
-		// TODO: Render the BUMPER. Look at how we place the front and the wheels of
 		// the car.
 		gl.glPushMatrix();
 		// Render hood - Use Red Material.
