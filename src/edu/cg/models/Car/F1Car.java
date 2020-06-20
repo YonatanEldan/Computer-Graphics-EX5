@@ -32,13 +32,6 @@ public class F1Car implements IRenderable, IIntersectable {
 		gl.glTranslated(Specification.F_LENGTH / 2.0 + Specification.C_BASE_LENGTH / 2.0, 0.0, 0.0);
 		carFront.render(gl);
 		gl.glPopMatrix();
-
-		List<BoundingSphere> spheres = this.getBoundingSpheres();
-		for (BoundingSphere sphere : spheres){
-			//System.out.println(sphere.getCenter());
-			sphere.render(gl);
-		}
-
 	}
 
 	@Override
