@@ -10,7 +10,6 @@ import edu.cg.models.IIntersectable;
 import edu.cg.models.IRenderable;
 
 public class Front implements IRenderable, IIntersectable {
-	// TODO: Add necessary fields (e.g. the bumper).
 	private FrontHood hood = new FrontHood();
 	private PairOfWheels wheels = new PairOfWheels();
 	private FrontBumber bumper = new FrontBumber();

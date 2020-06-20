@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.glu.GLU;
+import com.jogamp.opengl.glu.GLUquadric;
 import edu.cg.algebra.Point;
 import edu.cg.models.BoundingSphere;
 import edu.cg.models.IIntersectable;
@@ -39,6 +41,24 @@ public class Back implements IRenderable, IIntersectable {
 				0.5 * (Specification.B_HEIGHT_1 + Specification.B_HEIGHT_2), 0.0);
 		spoiler.render(gl);
 		gl.glPopMatrix();
+
+		GLU glu = new GLU();
+		GLUquadric quad = glu.gluNewQuadric();
+
+		// adding exhausts
+		gl.glPushMatrix();
+		Materials.SetDarkGreyMetalMaterial(gl);
+		gl.glTranslated(-0.29, 0.05, 0.03);
+		gl.glRotated(90, 0.0, 1, 0.0);
+		glu.gluCylinder(quad, 0.01, 0.01, 0.05, 20, 2);
+		gl.glPopMatrix();
+
+		gl.glPushMatrix();
+		Materials.SetDarkGreyMetalMaterial(gl);
+		gl.glTranslated(-0.29, 0.05, -0.03);
+		gl.glRotated(90, 0.0, 1, 0.0);
+		glu.gluCylinder(quad, 0.01, 0.01, 0.05, 20, 2);
+		gl.glPopMatrix();
 	}
 
 	@Override
@@ -48,7 +68,6 @@ public class Back implements IRenderable, IIntersectable {
 
 	@Override
 	public List<BoundingSphere> getBoundingSpheres() {
-		// TODO: Return a list of bounding spheres the list structure is as follow:
 		// s1
 		// where:
 		// s1 - sphere bounding the car front

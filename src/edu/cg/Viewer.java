@@ -62,7 +62,6 @@ public class Viewer implements GLEventListener {
 		gl.glColor3f(1.0f, 0.0f, 0.0f);
 		model.render(gl);
 
-		// TODO : If you implement the tree-structured bounding spheres hierarchy,
 		// you need to adapt the following lines in order to 'render' the spheres.
 		if (isRenderBoundingVolume && model instanceof IIntersectable) {
 			gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_LINE);

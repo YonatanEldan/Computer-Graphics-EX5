@@ -66,7 +66,6 @@ public class Center implements IRenderable, IIntersectable {
 
 	@Override
 	public List<BoundingSphere> getBoundingSpheres() {
-		// TODO: Return a list of bounding spheres the list structure is as follow:
 		// s1
 		// where:
 		// s1 - sphere bounding the car front

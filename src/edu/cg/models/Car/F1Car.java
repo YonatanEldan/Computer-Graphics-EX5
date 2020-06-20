@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.jogamp.opengl.*;
 
+import com.jogamp.opengl.glu.GLU;
+import com.jogamp.opengl.glu.GLUquadric;
 import edu.cg.algebra.Point;
 import edu.cg.models.BoundingSphere;
 import edu.cg.models.IIntersectable;
@@ -15,7 +17,6 @@ import edu.cg.models.IRenderable;
  *
  */
 public class F1Car implements IRenderable, IIntersectable {
-	// TODO : Add new design features to the car.
 	// Remember to include a ReadMe file specifying what you implemented.
 	Center carCenter = new Center();
 	Back carBack = new Back();
@@ -46,7 +47,6 @@ public class F1Car implements IRenderable, IIntersectable {
 
 	@Override
 	public List<BoundingSphere> getBoundingSpheres() {
-		// TODO: Return a list of bounding spheres the list structure is as follow:
 		// s1 -> s2 -> s3 -> s4
 		// where:
 		// s1 - sphere bounding the whole car
