@@ -57,8 +57,6 @@ public class Center implements IRenderable, IIntersectable {
 				Specification.C_BASE_HEIGHT, 0.0);
 		backBox.render(gl);
 		gl.glPopMatrix();
-		BoundingSphere sphere = this.getBoundingSpheres().get(0);
-		sphere.render(gl);
 	}
 
 	@Override

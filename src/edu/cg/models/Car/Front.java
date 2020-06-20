@@ -33,8 +33,6 @@ public class Front implements IRenderable, IIntersectable {
 		gl.glTranslated(Specification.TIRE_RADIUS * 2 + Specification.F_BUMPER_LENGTH / 2.0, 0.0, 0.0);
 		bumper.render(gl);
 		gl.glPopMatrix();
-		BoundingSphere sphere = this.getBoundingSpheres().get(0);
-		sphere.render(gl);
 	}
 
 	@Override

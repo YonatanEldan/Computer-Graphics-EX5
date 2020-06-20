@@ -34,7 +34,7 @@ public class BoundingSphere implements IRenderable {
 
 	public void translateCenter(double dx, double dy, double dz) {
 		Point p = new Point(dx,dy,dz);
-		this.center.add(p);
+		this.center = this.center.add(new Point(dx,dy,dz));
 	}
 
 

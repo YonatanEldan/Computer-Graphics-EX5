@@ -39,8 +39,6 @@ public class Back implements IRenderable, IIntersectable {
 				0.5 * (Specification.B_HEIGHT_1 + Specification.B_HEIGHT_2), 0.0);
 		spoiler.render(gl);
 		gl.glPopMatrix();
-		BoundingSphere sphere = this.getBoundingSpheres().get(0);
-		sphere.render(gl);
 	}
 
 	@Override
